@@ -194,21 +194,21 @@ async function scanProfile(){
  try{
   log("Searching username...");
 
-  const search=await api(
-   "https://users.roblox.com/v1/usernames/users",
-   {
-    method:"POST",
-    headers:{"Content-Type":"application/json"},
-    body:JSON.stringify({
-     usernames:[username],
-     excludeBannedUsers:false
-    })
-   }
-  );
+const search=await api(
+  "https://users.roblox.com/v1/users/search?keyword="+
+  encodeURIComponent(username)+"&limit=10"
+);
 
-  if(!search.data?.length)
-   throw new Error("Username not found.");
+const match=search.data?.find(
+  user=>user.name?.toLowerCase()===username.toLowerCase()
+);
 
+if(!match){
+  throw new Error("Username not found.");
+}
+
+const id=match.id;
+log("User ID found: "+id);
   const id=search.data[0].id;
   log("User ID found: "+id);
 
