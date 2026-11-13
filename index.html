@@ -173,9 +173,21 @@ function log(message){
 }
 
 async function api(url,options={}){
- const response=await fetch(url,options);
- if(!response.ok) throw new Error("HTTP "+response.status);
- return response.json();
+ log("Connecting: "+url);
+
+ try{
+  const response=await fetch(url,options);
+
+  if(!response.ok){
+   throw new Error("HTTP "+response.status);
+  }
+
+  return await response.json();
+
+ }catch(error){
+  log("API CONNECTION ERROR: "+error.name+" - "+error.message);
+  throw error;
+ }
 }
 
 async function scanProfile(){
