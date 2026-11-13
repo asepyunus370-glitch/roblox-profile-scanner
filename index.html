@@ -3,337 +3,673 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080d16">
 <title>ROBLOX PROFILE SCANNER</title>
 
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;background:#080d16;color:#e7efff;
- font-family:Arial,sans-serif;
+* {
+  box-sizing: border-box;
 }
-header{
- background:#101a2b;padding:19px 16px;
- border-bottom:1px solid #263a55;
- font-weight:bold;letter-spacing:1.5px;
+
+body {
+  margin: 0;
+  background: #080d16;
+  color: #e7efff;
+  font-family: Arial, sans-serif;
 }
-header span{color:#36d9a0}
-main{max-width:1150px;margin:auto;padding:16px}
-h2{font-size:14px;letter-spacing:1px;color:#d9e7fa}
-.panel{
- background:#111c2c;border:1px solid #263b57;
- border-radius:12px;padding:16px;margin-bottom:15px;
- box-shadow:0 5px 20px #0004;
+
+header {
+  background: #101a2b;
+  padding: 19px 16px;
+  border-bottom: 1px solid #263a55;
+  font-weight: bold;
+  letter-spacing: 1.5px;
 }
-input{
- width:100%;padding:14px;border-radius:8px;
- background:#080f1c;border:1px solid #344967;
- color:white;font-size:15px;margin:8px 0;
+
+header span {
+  color: #36d9a0;
 }
-button{
- width:100%;padding:14px;border:0;border-radius:8px;
- background:#087d68;color:white;font-weight:bold;
- font-size:14px;cursor:pointer;
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 16px;
 }
-button:disabled{opacity:.5}
-.muted{color:#91a4bd;font-size:12px;line-height:1.6}
-.profile{display:flex;gap:14px;align-items:center}
-.avatar{
- width:82px;height:82px;border-radius:12px;
- object-fit:cover;background:#253750;
- border:1px solid #38506d;
+
+h2 {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #d9e7fa;
 }
-.name{font-size:20px;font-weight:bold}
-.stats{
- display:grid;grid-template-columns:repeat(3,1fr);
- gap:8px;margin-top:18px
+
+.panel {
+  background: #111c2c;
+  border: 1px solid #263b57;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 15px;
+  box-shadow: 0 5px 20px #0004;
 }
-.stat{
- background:#091422;padding:13px 5px;
- border:1px solid #20334b;border-radius:8px;
- text-align:center;min-width:0
+
+input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 8px;
+  background: #080f1c;
+  border: 1px solid #344967;
+  color: white;
+  font-size: 15px;
+  margin: 8px 0;
 }
-.stat strong{
- display:block;color:#3cdda2;font-size:19px;
- overflow-wrap:anywhere
+
+button {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 8px;
+  background: #087d68;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
 }
-.stat small{font-size:10px;color:#91a4bd}
-.grid{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:9px
+
+button:disabled {
+  opacity: .5;
+  cursor: wait;
 }
-.item{
- background:#091422;border:1px solid #20334b;
- padding:12px;border-radius:8px;
- overflow-wrap:anywhere;font-size:12px
+
+.muted {
+  color: #91a4bd;
+  font-size: 12px;
+  line-height: 1.6;
 }
-.item b{display:block;color:#43d9a0;margin-top:7px}
-.terminal{
- background:#030810;color:#43dda0;
- padding:14px;border-radius:8px;
- font:12px/1.8 monospace;white-space:pre-wrap;
- overflow-wrap:anywhere;min-height:125px
+
+.profile {
+  display: flex;
+  gap: 14px;
+  align-items: center;
 }
-a{color:#53caff;text-decoration:none}
-.list{max-height:240px;overflow:auto}
-.list div{
- padding:10px;border-bottom:1px solid #263b57;
- font-size:12px
+
+.avatar {
+  width: 82px;
+  height: 82px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: #253750;
+  border: 1px solid #38506d;
 }
-footer{text-align:center;padding:20px;color:#71839d;font-size:11px}
-@media(min-width:750px){
- .layout{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+  overflow-wrap: anywhere;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.stat {
+  background: #091422;
+  padding: 13px 5px;
+  border: 1px solid #20334b;
+  border-radius: 8px;
+  text-align: center;
+  min-width: 0;
+}
+
+.stat strong {
+  display: block;
+  color: #3cdda2;
+  font-size: 19px;
+  overflow-wrap: anywhere;
+}
+
+.stat small {
+  font-size: 10px;
+  color: #91a4bd;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 9px;
+}
+
+.item {
+  background: #091422;
+  border: 1px solid #20334b;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+}
+
+.item b {
+  display: block;
+  color: #43d9a0;
+  margin-top: 7px;
+}
+
+.terminal {
+  background: #030810;
+  color: #43dda0;
+  padding: 14px;
+  border-radius: 8px;
+  font: 12px/1.8 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  min-height: 125px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+a {
+  color: #53caff;
+  text-decoration: none;
+}
+
+.list {
+  max-height: 240px;
+  overflow: auto;
+}
+
+.list div {
+  padding: 10px;
+  border-bottom: 1px solid #263b57;
+  font-size: 12px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  color: #71839d;
+  font-size: 11px;
+}
+
+@media (min-width: 750px) {
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
 }
 </style>
 </head>
 
 <body>
-<header>◈ ROBLOX <span>PROFILE SCANNER</span></header>
+
+<header>
+  ◈ ROBLOX <span>PROFILE SCANNER</span>
+</header>
 
 <main>
+
 <section class="panel">
- <h2>⌕ USERNAME SCANNER</h2>
- <input id="username" placeholder="Enter Roblox username...">
- <button id="scan" type="button">INITIALIZE SCAN</button>
- <p class="muted">PUBLIC DATA ANALYSIS • ROBLOX API</p>
+  <h2>⌕ USERNAME SCANNER</h2>
+
+  <input
+    id="username"
+    type="text"
+    placeholder="Enter Roblox username..."
+    autocomplete="off"
+  >
+
+  <button id="scan" type="button">
+    INITIALIZE SCAN
+  </button>
+
+  <p class="muted">
+    PUBLIC DATA ANALYSIS • ROBLOX API
+  </p>
 </section>
 
 <div class="layout">
+
 <section class="panel">
- <h2>◈ PLAYER PROFILE</h2>
- <div class="profile">
-  <img id="avatar" class="avatar" alt="Roblox avatar">
-  <div>
-   <div class="name" id="display">Awaiting scan...</div>
-   <div class="muted" id="handle">@username</div>
-   <div class="muted" id="created">Created: --</div>
+  <h2>◈ PLAYER PROFILE</h2>
+
+  <div class="profile">
+    <img
+      id="avatar"
+      class="avatar"
+      alt="Roblox avatar"
+    >
+
+    <div>
+      <div class="name" id="display">
+        Awaiting scan...
+      </div>
+
+      <div class="muted" id="handle">
+        @username
+      </div>
+
+      <div class="muted" id="created">
+        Created: --
+      </div>
+    </div>
   </div>
- </div>
- <div class="stats">
-  <div class="stat"><strong id="friends">--</strong><small>FRIENDS</small></div>
-  <div class="stat"><strong id="followers">--</strong><small>FOLLOWERS</small></div>
-  <div class="stat"><strong id="following">--</strong><small>FOLLOWING</small></div>
- </div>
- <p class="muted" id="description">Profile description will appear here.</p>
- <a id="profileLink" href="https://www.roblox.com" target="_blank">OPEN ROBLOX PROFILE ↗</a>
+
+  <div class="stats">
+    <div class="stat">
+      <strong id="friends">--</strong>
+      <small>FRIENDS</small>
+    </div>
+
+    <div class="stat">
+      <strong id="followers">--</strong>
+      <small>FOLLOWERS</small>
+    </div>
+
+    <div class="stat">
+      <strong id="following">--</strong>
+      <small>FOLLOWING</small>
+    </div>
+  </div>
+
+  <p class="muted" id="description">
+    Profile description will appear here.
+  </p>
+
+  <a
+    id="profileLink"
+    href="https://www.roblox.com"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    OPEN ROBLOX PROFILE ↗
+  </a>
 </section>
 
 <section class="panel">
- <h2>◈ NETWORK ANALYSIS</h2>
- <div class="grid">
-  <div class="item">USER ID<b id="userid">--</b></div>
-  <div class="item">ACCOUNT STATUS<b id="status">--</b></div>
-  <div class="item">PROFILE TYPE<b>PUBLIC</b></div>
-  <div class="item">DATA SOURCE<b>ROBLOX API</b></div>
-  <div class="item">ACCOUNT CREATED<b id="age">--</b></div>
-  <div class="item">SCAN STATUS<b id="scanstatus">STANDBY</b></div>
- </div>
- <h2>◈ ACCOUNT LINKS ANALYSIS</h2>
- <div class="item" id="links">
-  No account relationship analysis yet.
- </div>
+  <h2>◈ NETWORK ANALYSIS</h2>
+
+  <div class="grid">
+    <div class="item">
+      USER ID
+      <b id="userid">--</b>
+    </div>
+
+    <div class="item">
+      PROFILE STATUS
+      <b id="status">--</b>
+    </div>
+
+    <div class="item">
+      PROFILE TYPE
+      <b>PUBLIC</b>
+    </div>
+
+    <div class="item">
+      DATA SOURCE
+      <b>ROBLOX API</b>
+    </div>
+
+    <div class="item">
+      ACCOUNT AGE
+      <b id="age">--</b>
+    </div>
+
+    <div class="item">
+      SCAN STATUS
+      <b id="scanstatus">STANDBY</b>
+    </div>
+  </div>
+
+  <h2>◈ ACCOUNT LINKS ANALYSIS</h2>
+
+  <div class="item" id="links">
+    No account relationship analysis yet.
+  </div>
 </section>
+
 </div>
 
 <section class="panel">
- <h2>◈ FRIENDS DATABASE</h2>
- <div class="list" id="friendlist">
-  <div class="muted">Search a username to load public friends.</div>
- </div>
+  <h2>◈ FRIENDS DATABASE</h2>
+
+  <div class="list" id="friendlist">
+    <div class="muted">
+      Search a username to load public friends.
+    </div>
+  </div>
 </section>
 
 <section class="panel">
- <h2>◈ CURRENTLY WEARING</h2>
- <div id="wearing" class="muted">
-  Avatar item data will appear here.
- </div>
+  <h2>◈ CURRENTLY WEARING</h2>
+
+  <div id="wearing" class="muted">
+    Avatar item data will appear here.
+  </div>
 </section>
 
 <section class="panel">
- <h2>⌘ LIVE SYSTEM TERMINAL</h2>
- <div class="terminal" id="terminal">[SYSTEM] ROBLOX PROFILE SCANNER
+  <h2>⌘ LIVE SYSTEM TERMINAL</h2>
+
+  <div class="terminal" id="terminal">[SYSTEM] ROBLOX PROFILE SCANNER
 [STATUS] System initialized.
 [READY] Waiting for username input...</div>
 </section>
 
 <footer>
-ROBLOX PROFILE SCANNER • INDEPENDENT FAN PROJECT<br>
-Not affiliated with Roblox Corporation.<br>
-Only publicly accessible information is analyzed.
+  ROBLOX PROFILE SCANNER • INDEPENDENT FAN PROJECT<br>
+  Not affiliated with Roblox Corporation.<br>
+  Only publicly accessible information is analyzed.
 </footer>
+
 </main>
 
 <script>
-const $ = id => document.getElementById(id);
+"use strict";
 
-function log(message){
- $("terminal").textContent += "\n[+] "+message;
- $("terminal").scrollTop=$("terminal").scrollHeight;
+const $ = (id) => document.getElementById(id);
+
+function log(message) {
+  const terminal = $("terminal");
+
+  terminal.textContent += "\n[+] " + message;
+  terminal.scrollTop = terminal.scrollHeight;
 }
 
-async function api(url,options={}){
- log("Connecting: "+url);
+async function api(url) {
+  log("Requesting Roblox API...");
 
- try{
-  const response=await fetch(url,options);
+  let response;
 
-  if(!response.ok){
-   throw new Error("HTTP "+response.status);
+  try {
+    response = await fetch(url);
+  } catch (error) {
+    throw new Error(
+      "Network/CORS error: " + error.message
+    );
+  }
+
+  if (!response.ok) {
+    throw new Error("HTTP " + response.status);
   }
 
   return await response.json();
-
- }catch(error){
-  log("API CONNECTION ERROR: "+error.name+" - "+error.message);
-  throw error;
- }
 }
 
-async function scanProfile(){
-alert("FUNGSI SCANPROFILE BERHASIL DIPANGGIL!");
- const username=$("username").value.trim();
- if(!username){
-  alert("Please enter a Roblox username.");
-  return;
- }
+function resetProfile() {
+  $("display").textContent = "Loading...";
+  $("handle").textContent = "@...";
+  $("created").textContent = "Created: --";
+  $("avatar").removeAttribute("src");
 
- $("scan").disabled=true;
- $("scanstatus").textContent="SCANNING";
- $("terminal").textContent="[SYSTEM] Initializing scan...";
- $("friendlist").textContent="Loading...";
- $("wearing").textContent="Loading...";
+  $("friends").textContent = "--";
+  $("followers").textContent = "--";
+  $("following").textContent = "--";
 
- try{
-  log("Searching username...");
+  $("userid").textContent = "--";
+  $("status").textContent = "--";
+  $("age").textContent = "--";
 
-const search=await api(
-  "https://users.roblox.com/v1/users/search?keyword="+
-  encodeURIComponent(username)+"&limit=10"
-);
+  $("description").textContent = "Loading profile...";
+  $("links").textContent = "Analyzing public information...";
+  $("friendlist").textContent = "Loading...";
+  $("wearing").textContent = "Loading...";
 
-const match=search.data?.find(
-  user=>user.name?.toLowerCase()===username.toLowerCase()
-);
-
-if(!match){
-  throw new Error("Username not found.");
+  $("profileLink").href = "https://www.roblox.com";
 }
 
-const match=search.data?.find(
-  user=>user.name?.toLowerCase()===username.toLowerCase()
-);
+async function scanProfile() {
+  const username = $("username").value.trim();
+  const button = $("scan");
 
-if(!match){
-  throw new Error("Username not found.");
+  if (!username) {
+    alert("Please enter a Roblox username.");
+    $("username").focus();
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "SCANNING...";
+
+  $("scanstatus").textContent = "SCANNING";
+  $("terminal").textContent = "[SYSTEM] Initializing scan...";
+
+  resetProfile();
+
+  try {
+    // SEARCH USERNAME
+
+    log("Searching username...");
+
+    const searchUrl =
+      "https://users.roblox.com/v1/users/search?keyword=" +
+      encodeURIComponent(username) +
+      "&limit=10";
+
+    const search = await api(searchUrl);
+
+    const match = search.data?.find(
+      user =>
+        user.name?.toLowerCase() ===
+        username.toLowerCase()
+    );
+
+    if (!match) {
+      throw new Error("Username not found.");
+    }
+
+    const id = match.id;
+
+    log("User ID found: " + id);
+
+    // USER PROFILE
+
+    const user = await api(
+      "https://users.roblox.com/v1/users/" + id
+    );
+
+    $("display").textContent =
+      user.displayName || user.name;
+
+    $("handle").textContent = "@" + user.name;
+
+    $("userid").textContent = id;
+
+    $("status").textContent = "PUBLIC PROFILE";
+
+    $("description").textContent =
+      user.description || "No description";
+
+    const createdDate = new Date(user.created);
+
+    $("created").textContent =
+      "Created: " +
+      createdDate.toLocaleDateString("id-ID");
+
+    const accountAge = Math.floor(
+      (Date.now() - createdDate.getTime()) /
+      31557600000
+    );
+
+    $("age").textContent =
+      accountAge + " years";
+
+    $("profileLink").href =
+      "https://www.roblox.com/users/" +
+      id +
+      "/profile";
+
+    log("Profile retrieved successfully.");
+
+    // AVATAR
+
+    try {
+      const thumbnail = await api(
+        "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" +
+        id +
+        "&size=150x150&format=Png&isCircular=true"
+      );
+
+      const imageUrl =
+        thumbnail.data?.[0]?.imageUrl;
+
+      if (imageUrl) {
+        $("avatar").src = imageUrl;
+      }
+
+      log("Avatar retrieved.");
+    } catch (error) {
+      log("Avatar unavailable: " + error.message);
+    }
+
+    // FRIENDS AND FOLLOWERS COUNTS
+
+    const countEndpoints = [
+      [
+        "friends",
+        "https://friends.roblox.com/v1/users/" +
+        id +
+        "/friends/count"
+      ],
+      [
+        "followers",
+        "https://friends.roblox.com/v1/users/" +
+        id +
+        "/followers/count"
+      ],
+      [
+        "following",
+        "https://friends.roblox.com/v1/users/" +
+        id +
+        "/followings/count"
+      ]
+    ];
+
+    await Promise.all(
+      countEndpoints.map(async ([key, url]) => {
+        try {
+          const data = await api(url);
+
+          $(key).textContent =
+            data.count ?? "N/A";
+
+          log(key + " count retrieved.");
+        } catch (error) {
+          $(key).textContent = "N/A";
+          log(key + " unavailable.");
+        }
+      })
+    );
+
+    // FRIENDS LIST
+
+    try {
+      const data = await api(
+        "https://friends.roblox.com/v1/users/" +
+        id +
+        "/friends"
+      );
+
+      $("friendlist").innerHTML = "";
+
+      if (data.data?.length) {
+        data.data.forEach(friend => {
+          const row = document.createElement("div");
+
+          row.textContent =
+            (friend.displayName || friend.name) +
+            " (@" +
+            friend.name +
+            ")";
+
+          $("friendlist").appendChild(row);
+        });
+
+        log("Friends list loaded.");
+      } else {
+        $("friendlist").textContent =
+          "No public friends returned.";
+      }
+    } catch (error) {
+      $("friendlist").textContent =
+        "Friends list unavailable.";
+
+      log("Friends list unavailable.");
+    }
+
+    // CURRENTLY WEARING
+
+    try {
+      const outfit = await api(
+        "https://avatar.roblox.com/v1/users/" +
+        id +
+        "/currently-wearing"
+      );
+
+      const assets = outfit.assetIds || [];
+
+      $("wearing").textContent =
+        assets.length
+          ? "Asset IDs: " + assets.join(", ")
+          : "No wearing items returned.";
+
+      log("Avatar items retrieved.");
+    } catch (error) {
+      $("wearing").textContent =
+        "Avatar item data unavailable.";
+
+      log("Avatar items unavailable.");
+    }
+
+    // ACCOUNT LINKS
+
+    $("links").textContent =
+      "No verified account ownership links. " +
+      "Public friend relationships do not prove common ownership.";
+
+    $("scanstatus").textContent = "COMPLETED";
+
+    log("SCAN COMPLETED.");
+
+  } catch (error) {
+    $("scanstatus").textContent = "ERROR";
+
+    log("SCAN ERROR: " + error.message);
+
+    alert(
+      "Scan failed: " +
+      error.message +
+      "\n\nIf this is a CORS error, a secure API proxy may be required."
+    );
+
+  } finally {
+    button.disabled = false;
+    button.textContent = "INITIALIZE SCAN";
+  }
 }
 
-const id=match.id;
-log("User ID found: "+id);
+// BUTTON EVENT
 
-const user=await api(
-  "https://users.roblox.com/v1/users/"+id
+$("scan").addEventListener(
+  "click",
+  scanProfile
 );
-  const id=search.data[0].id;
-  log("User ID found: "+id);
 
-  const user=await api(
-   "https://users.roblox.com/v1/users/"+id
-  );
+// ENTER KEY
 
-  $("display").textContent=user.displayName;
-  $("handle").textContent="@"+user.name;
-  $("userid").textContent=id;
-  $("status").textContent=user.isBanned?"BANNED":"AVAILABLE";
-  $("description").textContent=user.description||"No description";
-  $("created").textContent="Created: "+
-   new Date(user.created).toLocaleDateString("id-ID");
-  $("age").textContent=
-   Math.floor((Date.now()-new Date(user.created))/31557600000)+" years";
-  $("profileLink").href=
-   "https://www.roblox.com/users/"+id+"/profile";
-
-  log("Profile data retrieved.");
-
-  const thumbnail=await api(
-   "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds="+
-   id+"&size=150x150&format=Png&isCircular=true"
-  );
-  if(thumbnail.data?.[0]?.imageUrl){
-   $("avatar").src=thumbnail.data[0].imageUrl;
+$("username").addEventListener(
+  "keydown",
+  function(event) {
+    if (event.key === "Enter") {
+      scanProfile();
+    }
   }
+);
 
-  const counts=[
-   ["friends","https://friends.roblox.com/v1/users/"+id+"/friends/count"],
-   ["followers","https://friends.roblox.com/v1/users/"+id+"/followers/count"],
-   ["following","https://friends.roblox.com/v1/users/"+id+"/followings/count"]
-  ];
+log("Scanner JavaScript loaded.");
 
-  await Promise.all(counts.map(async ([key,url])=>{
-   try{
-    const data=await api(url);
-    $(key).textContent=data.count??"N/A";
-    log(key+" count retrieved.");
-   }catch(e){
-    $(key).textContent="N/A";
-    log(key+" unavailable.");
-   }
-  }));
-
-  try{
-   const data=await api(
-    "https://friends.roblox.com/v1/users/"+id+"/friends"
-   );
-   $("friendlist").innerHTML="";
-   if(data.data?.length){
-    data.data.forEach(friend=>{
-     const row=document.createElement("div");
-     row.textContent=friend.displayName+" (@"+friend.name+")";
-     $("friendlist").appendChild(row);
-    });
-    log("Public friends list loaded.");
-   }else{
-    $("friendlist").textContent="No public friends returned.";
-   }
-  }catch(e){
-   $("friendlist").textContent="Friends list unavailable.";
-   log("Friends list unavailable.");
-  }
-
-  try{
-   const outfit=await api(
-    "https://avatar.roblox.com/v1/users/"+id+"/currently-wearing"
-   );
-   $("wearing").textContent=outfit.assetIds?.length
-    ? "Asset IDs: "+outfit.assetIds.join(", ")
-    : "No wearing items returned.";
-  }catch(e){
-   $("wearing").textContent="Avatar item data unavailable.";
-  }
-
-  $("links").textContent=
-   "No verified account ownership links. Public friend relationships do not prove common ownership.";
-
-  $("scanstatus").textContent="COMPLETED";
-  log("SCAN COMPLETED SUCCESSFULLY.");
-
- }catch(error){
-  $("scanstatus").textContent="ERROR";
-  log("ERROR: "+error.message);
-  alert("Scan failed: "+error.message+
-   ". Check internet connection or API availability.");
- }finally{
-  $("scan").disabled=false;
- }
-} 
- document.addEventListener("DOMContentLoaded", function(){
-  const scanButton = document.getElementById("scan");
-
-  scanButton.addEventListener("click", function(){
-    console.log("SCAN BUTTON CLICKED");
-    scanProfile();
-  });
-});
 </script>
+
 </body>
 </html>
