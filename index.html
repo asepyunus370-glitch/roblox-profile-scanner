@@ -18,8 +18,8 @@
   --cyan:#42d9ff;
   --green:#57e6a5;
   --red:#ff667c;
+  --yellow:#ffd166;
 }
-
 * { box-sizing:border-box; }
 
 body {
@@ -29,17 +29,12 @@ body {
   color:var(--text);
   font-family:Arial,sans-serif;
 }
-
-.container {
-  max-width:1000px;
-  margin:auto;
-}
+.container { max-width:1000px; margin:auto; }
 
 header {
   text-align:center;
   padding:25px 10px;
 }
-
 .logo {
   font-size:30px;
   font-weight:900;
@@ -47,14 +42,12 @@ header {
   color:var(--cyan);
   text-shadow:0 0 20px #42d9ff55;
 }
-
 .subtitle {
   color:var(--muted);
   font-size:12px;
   letter-spacing:2px;
   margin-top:9px;
 }
-
 .panel {
   background:var(--panel);
   border:1px solid var(--line);
@@ -62,7 +55,6 @@ header {
   padding:18px;
   margin-bottom:16px;
 }
-
 .section-title {
   color:var(--cyan);
   font-size:13px;
@@ -70,11 +62,7 @@ header {
   margin-bottom:15px;
   font-weight:bold;
 }
-
-.search-row {
-  display:flex;
-  gap:9px;
-}
+.search-row { display:flex; gap:9px; }
 
 input {
   width:100%;
@@ -87,10 +75,7 @@ input {
   outline:none;
   font-size:15px;
 }
-
-input:focus {
-  border-color:var(--cyan);
-}
+input:focus { border-color:var(--cyan); }
 
 button {
   border:0;
@@ -101,18 +86,15 @@ button {
   padding:13px 17px;
   cursor:pointer;
 }
-
 button:disabled {
   opacity:.5;
   cursor:not-allowed;
 }
-
 .status {
   margin-top:12px;
   color:var(--muted);
   font-size:12px;
 }
-
 .hidden { display:none !important; }
 
 .profile {
@@ -120,7 +102,6 @@ button:disabled {
   gap:18px;
   align-items:center;
 }
-
 .avatar {
   width:100px;
   height:100px;
@@ -129,30 +110,25 @@ button:disabled {
   object-fit:cover;
   border:1px solid var(--line);
 }
-
 .username {
   font-size:22px;
   font-weight:bold;
   overflow-wrap:anywhere;
 }
-
 .display-name {
   color:var(--muted);
   margin-top:5px;
 }
-
 .verified {
   color:var(--cyan);
   font-size:11px;
   margin-top:8px;
 }
-
 .grid {
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
 }
-
 .stat {
   background:var(--panel2);
   border:1px solid var(--line);
@@ -160,20 +136,17 @@ button:disabled {
   padding:15px 10px;
   text-align:center;
 }
-
 .stat-number {
   font-size:22px;
   font-weight:bold;
   color:var(--cyan);
   overflow-wrap:anywhere;
 }
-
 .stat-label {
   color:var(--muted);
   font-size:11px;
   margin-top:6px;
 }
-
 .detail-row {
   display:flex;
   justify-content:space-between;
@@ -182,16 +155,12 @@ button:disabled {
   border-bottom:1px solid var(--line);
   font-size:13px;
 }
-
 .detail-row:last-child { border:0; }
-
 .detail-row span:first-child { color:var(--muted); }
-
 .detail-row span:last-child {
   text-align:right;
   overflow-wrap:anywhere;
 }
-
 .description {
   white-space:pre-wrap;
   overflow-wrap:anywhere;
@@ -199,7 +168,6 @@ button:disabled {
   font-size:13px;
   color:#c4d2e5;
 }
-
 .friend {
   padding:12px;
   margin-bottom:8px;
@@ -207,19 +175,16 @@ button:disabled {
   border:1px solid var(--line);
   border-radius:8px;
 }
-
 .friend strong {
   display:block;
   font-size:13px;
 }
-
 .friend small {
   display:block;
   color:var(--muted);
   margin-top:5px;
   overflow-wrap:anywhere;
 }
-
 .asset {
   display:inline-block;
   padding:9px 11px;
@@ -230,13 +195,12 @@ button:disabled {
   font-size:12px;
   color:var(--cyan);
 }
-
 .terminal {
   background:#050a10;
   border:1px solid #1d3544;
   border-radius:9px;
   padding:15px;
-  height:190px;
+  height:210px;
   overflow-y:auto;
   font-family:monospace;
   font-size:11px;
@@ -244,13 +208,11 @@ button:disabled {
   color:var(--green);
   overflow-wrap:anywhere;
 }
-
 .terminal-title {
   color:var(--cyan);
   margin-bottom:10px;
   font-weight:bold;
 }
-
 .result-button {
   display:block;
   width:100%;
@@ -260,20 +222,17 @@ button:disabled {
   color:var(--text);
   border:1px solid var(--line);
 }
-
 .result-button small {
   display:block;
   color:var(--muted);
   margin-top:5px;
 }
-
 footer {
   text-align:center;
   padding:20px;
   color:var(--muted);
   font-size:11px;
 }
-
 @media(max-width:600px) {
   body { padding:12px; }
   .grid { grid-template-columns:repeat(3,1fr); }
@@ -297,17 +256,13 @@ footer {
 
 <section class="panel">
   <div class="section-title">⌕ USERNAME SEARCH</div>
-
   <div class="search-row">
-    <input
-      id="usernameInput"
+    <input id="usernameInput"
       type="text"
       placeholder="Masukkan username Roblox..."
-      autocomplete="off"
-    >
+      autocomplete="off">
     <button id="scanBtn" type="button">SCAN PROFILE</button>
   </div>
-
   <div class="status" id="status">
     System ready. Waiting for username...
   </div>
@@ -320,10 +275,8 @@ footer {
 
 <section class="panel hidden" id="profilePanel">
   <div class="section-title">USER PROFILE</div>
-
   <div class="profile">
     <img id="avatar" class="avatar" alt="Roblox avatar">
-
     <div>
       <div class="username" id="profileName">-</div>
       <div class="display-name" id="displayName">-</div>
@@ -334,18 +287,15 @@ footer {
 
 <section class="panel hidden" id="statsPanel">
   <div class="section-title">ACCOUNT STATISTICS</div>
-
   <div class="grid">
     <div class="stat">
       <div class="stat-number" id="friendsCount">—</div>
       <div class="stat-label">FRIENDS</div>
     </div>
-
     <div class="stat">
       <div class="stat-number" id="followersCount">—</div>
       <div class="stat-label">FOLLOWERS</div>
     </div>
-
     <div class="stat">
       <div class="stat-number" id="followingCount">—</div>
       <div class="stat-label">FOLLOWING</div>
@@ -360,27 +310,26 @@ footer {
     <span>Username</span>
     <span id="detailUsername">-</span>
   </div>
-
   <div class="detail-row">
     <span>User ID</span>
     <span id="userId">-</span>
   </div>
-
+  <div class="detail-row">
+    <span>Country / Region</span>
+    <span>Not publicly available</span>
+  </div>
   <div class="detail-row">
     <span>Account Created</span>
     <span id="created">-</span>
   </div>
-
   <div class="detail-row">
-    <span>Profile Status</span>
+    <span>Profile Information</span>
     <span id="accountStatus">-</span>
   </div>
-
   <div class="detail-row">
     <span>Description</span>
     <span></span>
   </div>
-
   <div class="description" id="description">-</div>
 </section>
 
@@ -397,7 +346,7 @@ footer {
 <section class="panel">
   <div class="terminal-title">⌘ LIVE SYSTEM TERMINAL</div>
   <div class="terminal" id="terminal">
-    <div>[SYSTEM] ROBLOX PROFILE SCANNER</div>
+    <div>[SYSTEM] ROBLOX PROFILE SCANNER v4.0</div>
     <div>[STATUS] System initialized.</div>
     <div>[READY] Waiting for username input...</div>
   </div>
@@ -414,15 +363,13 @@ footer {
 <script>
 "use strict";
 
-/* CLOUDFLARE WORKER VERSION 3.0 */
-
 const API_BASE =
   "https://roblox-profile-api.asepyunus370.workers.dev/proxy/";
 
 const $ = id => document.getElementById(id);
 
-let currentUser = null;
 let scanRunning = false;
+let currentUser = null;
 
 function log(message) {
   const terminal = $("terminal");
@@ -448,6 +395,10 @@ function hide(id) {
   $(id).classList.add("hidden");
 }
 
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function formatNumber(number) {
   return Number(number).toLocaleString("id-ID");
 }
@@ -465,17 +416,20 @@ function clearResults() {
   $("friendList").textContent = "";
   $("wearingList").textContent = "";
   $("searchResults").replaceChildren();
-  $("avatar").removeAttribute("src");
 
+  $("avatar").removeAttribute("src");
   $("friendsCount").textContent = "—";
   $("followersCount").textContent = "—";
   $("followingCount").textContent = "—";
 }
 
+function setBusy(value) {
+  scanRunning = value;
+  $("scanBtn").disabled = value;
+}
+
 async function api(host, path, params = {}) {
-  const url = new URL(
-    API_BASE + host + path
-  );
+  const url = new URL(API_BASE + host + path);
 
   Object.entries(params).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
@@ -483,26 +437,63 @@ async function api(host, path, params = {}) {
     }
   });
 
-  const response = await fetch(url.toString(), {
-    method: "GET",
-    headers: {
-      "Accept": "application/json"
-    }
-  });
+  let lastError;
 
-  if (!response.ok) {
-    throw new Error("HTTP " + response.status);
+  // Percobaan ulang terbatas khusus HTTP 429.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const response = await fetch(url.toString(), {
+        method: "GET",
+        headers: { "Accept": "application/json" },
+        cache: "no-store"
+      });
+
+      if (response.status === 429) {
+        if (attempt < 2) {
+          const retryHeader = Number(
+            response.headers.get("Retry-After")
+          );
+
+          const delay = retryHeader > 0
+            ? Math.min(retryHeader * 1000, 15000)
+            : (attempt === 0 ? 4000 : 8000);
+
+          log("HTTP 429: waiting before retry...");
+          await wait(delay);
+          continue;
+        }
+
+        throw new Error("HTTP 429 - Roblox rate limit");
+      }
+
+      if (!response.ok) {
+        throw new Error("HTTP " + response.status);
+      }
+
+      return await response.json();
+
+    } catch (error) {
+      lastError = error;
+
+      if (
+        error.message.includes("HTTP 429") ||
+        error.message.includes("HTTP ")
+      ) {
+        throw error;
+      }
+
+      if (attempt < 2) {
+        await wait(2000);
+      }
+    }
   }
 
-  return await response.json();
-}
-
-function wait(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
+  throw lastError || new Error("Network request failed");
 }
 
 async function optionalRequest(label, host, path, params = {}) {
-  await wait(1000);
+  // Jeda antar-endpoint agar permintaan tidak bertubi-tubi.
+  await wait(1500);
 
   try {
     log("Loading " + label + "...");
@@ -510,12 +501,10 @@ async function optionalRequest(label, host, path, params = {}) {
     const result = await api(host, path, params);
 
     log(label + " loaded successfully.");
-
     return result;
 
   } catch (error) {
     log(label + " unavailable: " + error.message);
-
     return null;
   }
 }
@@ -530,26 +519,19 @@ async function searchUsername() {
     return;
   }
 
-  scanRunning = true;
-  $("scanBtn").disabled = true;
-
+  setBusy(true);
   clearResults();
-
   $("terminal").replaceChildren();
 
   log("Initializing scan...");
   log("Searching username...");
-
   setStatus("Searching Roblox username...");
 
   try {
     const result = await api(
       "users.roblox.com",
       "/v1/users/search",
-      {
-        keyword: keyword,
-        limit: 10
-      }
+      { keyword, limit: 10 }
     );
 
     const users = result.data || [];
@@ -565,19 +547,17 @@ async function searchUsername() {
     );
 
     if (exact) {
-      await loadProfile(exact);
+      // Langsung jalankan profil tanpa memanggil fungsi
+      // yang menolak proses ketika scanRunning masih true.
+      await runProfile(exact);
       return;
     }
 
     show("searchResultsPanel");
-
-    $("searchResults").replaceChildren();
-
     setStatus("Pilih akun yang sesuai dengan username.");
 
     users.forEach(user => {
       const button = document.createElement("button");
-
       button.type = "button";
       button.className = "result-button";
 
@@ -585,13 +565,16 @@ async function searchUsername() {
       title.textContent = user.displayName || user.name;
 
       const detail = document.createElement("small");
-      detail.textContent =
-        "@" + user.name + " · ID: " + user.id;
+      detail.textContent = "@" + user.name + " · ID: " + user.id;
 
       button.append(title, detail);
 
       button.addEventListener("click", async () => {
-        await loadProfile(user);
+        if (scanRunning) return;
+
+        setBusy(true);
+        await runProfile(user);
+        setBusy(false);
       });
 
       $("searchResults").appendChild(button);
@@ -604,19 +587,12 @@ async function searchUsername() {
     setStatus("Pencarian gagal: " + error.message);
 
   } finally {
-    scanRunning = false;
-    $("scanBtn").disabled = false;
+    setBusy(false);
   }
 }
 
-async function loadProfile(user) {
-  if (scanRunning) return;
-
-  scanRunning = true;
-  $("scanBtn").disabled = true;
-
+async function runProfile(user) {
   currentUser = user;
-
   const id = user.id;
 
   clearResults();
@@ -631,11 +607,9 @@ async function loadProfile(user) {
   $("displayName").textContent = user.displayName || "-";
   $("userId").textContent = id;
   $("detailUsername").textContent = user.name;
-
   $("created").textContent = "Loading...";
   $("description").textContent = "Loading profile details...";
-  $("accountStatus").textContent = "Basic data found";
-
+  $("accountStatus").textContent = "Public profile";
   $("verified").textContent =
     user.hasVerifiedBadge ? "✓ VERIFIED BADGE" : "";
 
@@ -643,14 +617,12 @@ async function loadProfile(user) {
   $("wearingList").textContent = "Loading items...";
 
   log("User ID found: " + id);
-  log("Partial scan activated.");
+  log("Loading public profile information...");
 
-  setStatus("Basic profile found. Loading additional information...");
+  setStatus("Loading public profile information...");
 
   try {
-
-    /* 1. PROFILE DETAILS */
-
+    // 1. PROFILE DETAILS
     const profile = await optionalRequest(
       "Profile details",
       "users.roblox.com",
@@ -659,7 +631,6 @@ async function loadProfile(user) {
 
     if (profile) {
       $("profileName").textContent = "@" + profile.name;
-
       $("displayName").textContent =
         profile.displayName || user.displayName || "-";
 
@@ -673,12 +644,13 @@ async function loadProfile(user) {
       $("verified").textContent =
         profile.hasVerifiedBadge ? "✓ VERIFIED BADGE" : "";
 
-      $("accountStatus").textContent =
-        "Profile details loaded";
+      $("accountStatus").textContent = "Information loaded";
+    } else {
+      $("created").textContent = "Not available";
+      $("description").textContent = "Data profil tidak tersedia.";
     }
 
-    /* 2. AVATAR */
-
+    // 2. AVATAR
     const avatar = await optionalRequest(
       "Avatar",
       "thumbnails.roblox.com",
@@ -695,10 +667,15 @@ async function loadProfile(user) {
 
     if (avatarUrl) {
       $("avatar").src = avatarUrl;
+      $("avatar").onerror = () => {
+        $("avatar").removeAttribute("src");
+        log("Avatar image could not be displayed.");
+      };
+    } else {
+      log("Avatar image unavailable.");
     }
 
-    /* 3. FRIEND COUNT */
-
+    // 3. FRIEND COUNT
     const friends = await optionalRequest(
       "Friends count",
       "friends.roblox.com",
@@ -706,12 +683,10 @@ async function loadProfile(user) {
     );
 
     if (typeof friends?.count === "number") {
-      $("friendsCount").textContent =
-        formatNumber(friends.count);
+      $("friendsCount").textContent = formatNumber(friends.count);
     }
 
-    /* 4. FOLLOWERS */
-
+    // 4. FOLLOWERS
     const followers = await optionalRequest(
       "Followers count",
       "friends.roblox.com",
@@ -719,12 +694,10 @@ async function loadProfile(user) {
     );
 
     if (typeof followers?.count === "number") {
-      $("followersCount").textContent =
-        formatNumber(followers.count);
+      $("followersCount").textContent = formatNumber(followers.count);
     }
 
-    /* 5. FOLLOWING */
-
+    // 5. FOLLOWING
     const following = await optionalRequest(
       "Following count",
       "friends.roblox.com",
@@ -732,19 +705,15 @@ async function loadProfile(user) {
     );
 
     if (typeof following?.count === "number") {
-      $("followingCount").textContent =
-        formatNumber(following.count);
+      $("followingCount").textContent = formatNumber(following.count);
     }
 
-    /* 6. FRIENDS LIST */
-
+    // 6. FRIENDS LIST
     const friendData = await optionalRequest(
       "Friends list",
       "friends.roblox.com",
       "/v1/users/" + id + "/friends",
-      {
-        limit: 10
-      }
+      { limit: 10 }
     );
 
     const friendContainer = $("friendList");
@@ -756,8 +725,7 @@ async function loadProfile(user) {
         item.className = "friend";
 
         const name = document.createElement("strong");
-        name.textContent =
-          friend.displayName || friend.name;
+        name.textContent = friend.displayName || friend.name;
 
         const detail = document.createElement("small");
         detail.textContent =
@@ -767,12 +735,10 @@ async function loadProfile(user) {
         friendContainer.appendChild(item);
       });
     } else {
-      friendContainer.textContent =
-        "Data teman tidak tersedia.";
+      friendContainer.textContent = "Data teman tidak tersedia.";
     }
 
-    /* 7. CURRENTLY WEARING */
-
+    // 7. CURRENTLY WEARING
     const wearing = await optionalRequest(
       "Currently wearing",
       "avatar.roblox.com",
@@ -785,49 +751,32 @@ async function loadProfile(user) {
     if (wearing?.assetIds?.length) {
       wearing.assetIds.forEach(assetId => {
         const item = document.createElement("span");
-
         item.className = "asset";
         item.textContent = "Asset ID: " + assetId;
-
         assetContainer.appendChild(item);
       });
     } else {
-      assetContainer.textContent =
-        "Data item tidak tersedia.";
+      assetContainer.textContent = "Data item tidak tersedia.";
     }
 
-    log("Partial scan completed.");
-
+    log("Profile scan completed.");
     setStatus(
-      "Pemindaian selesai. Data yang dibatasi Roblox ditampilkan sebagai tidak tersedia."
+      "Pemindaian selesai. Data yang tidak tersedia ditampilkan secara terpisah."
     );
 
   } catch (error) {
     log("SCAN ERROR: " + error.message);
-
-    setStatus(
-      "Sebagian data berhasil dimuat. Beberapa informasi tidak tersedia."
-    );
-
-  } finally {
-    scanRunning = false;
-    $("scanBtn").disabled = false;
+    setStatus("Sebagian data berhasil dimuat. " + error.message);
   }
 }
 
-$("scanBtn").addEventListener(
-  "click",
-  searchUsername
-);
+$("scanBtn").addEventListener("click", searchUsername);
 
-$("usernameInput").addEventListener(
-  "keydown",
-  event => {
-    if (event.key === "Enter") {
-      searchUsername();
-    }
+$("usernameInput").addEventListener("keydown", event => {
+  if (event.key === "Enter") {
+    searchUsername();
   }
-);
+});
 
 log("System initialized successfully.");
 </script>
