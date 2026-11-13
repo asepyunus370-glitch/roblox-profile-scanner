@@ -219,8 +219,20 @@ if(!match){
   throw new Error("Username not found.");
 }
 
+const match=search.data?.find(
+  user=>user.name?.toLowerCase()===username.toLowerCase()
+);
+
+if(!match){
+  throw new Error("Username not found.");
+}
+
 const id=match.id;
 log("User ID found: "+id);
+
+const user=await api(
+  "https://users.roblox.com/v1/users/"+id
+);
   const id=search.data[0].id;
   log("User ID found: "+id);
 
