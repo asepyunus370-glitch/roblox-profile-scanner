@@ -8,695 +8,828 @@
 <title>ROBLOX PROFILE SCANNER</title>
 
 <style>
-* {
-  box-sizing: border-box;
+:root {
+  --bg:#080d16;
+  --panel:#101a29;
+  --panel2:#0c1420;
+  --line:#203249;
+  --text:#e8f1ff;
+  --muted:#8da2bd;
+  --cyan:#42d9ff;
+  --green:#57e6a5;
+  --red:#ff667c;
 }
 
+* { box-sizing:border-box; }
+
 body {
-  margin: 0;
-  background: #080d16;
-  color: #e7efff;
-  font-family: Arial, sans-serif;
+  margin:0;
+  padding:20px;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+}
+
+.container {
+  max-width:1000px;
+  margin:auto;
 }
 
 header {
-  background: #101a2b;
-  padding: 19px 16px;
-  border-bottom: 1px solid #263a55;
-  font-weight: bold;
-  letter-spacing: 1.5px;
+  text-align:center;
+  padding:25px 10px;
 }
 
-header span {
-  color: #36d9a0;
+.logo {
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:3px;
+  color:var(--cyan);
+  text-shadow:0 0 20px #42d9ff55;
 }
 
-main {
-  max-width: 1150px;
-  margin: auto;
-  padding: 16px;
-}
-
-h2 {
-  font-size: 14px;
-  letter-spacing: 1px;
-  color: #d9e7fa;
+.subtitle {
+  color:var(--muted);
+  font-size:12px;
+  letter-spacing:2px;
+  margin-top:9px;
 }
 
 .panel {
-  background: #111c2c;
-  border: 1px solid #263b57;
-  border-radius: 12px;
-  padding: 16px;
-  margin-bottom: 15px;
-  box-shadow: 0 5px 20px #0004;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:18px;
+  margin-bottom:16px;
+}
+
+.section-title {
+  color:var(--cyan);
+  font-size:13px;
+  letter-spacing:1.5px;
+  margin-bottom:15px;
+  font-weight:bold;
+}
+
+.search-row {
+  display:flex;
+  gap:9px;
 }
 
 input {
-  width: 100%;
-  padding: 14px;
-  border-radius: 8px;
-  background: #080f1c;
-  border: 1px solid #344967;
-  color: white;
-  font-size: 15px;
-  margin: 8px 0;
+  width:100%;
+  min-width:0;
+  padding:14px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  background:var(--panel2);
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus {
+  border-color:var(--cyan);
 }
 
 button {
-  width: 100%;
-  padding: 14px;
-  border: 0;
-  border-radius: 8px;
-  background: #087d68;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
+  border:0;
+  border-radius:8px;
+  background:var(--cyan);
+  color:#06111b;
+  font-weight:bold;
+  padding:13px 17px;
+  cursor:pointer;
 }
 
 button:disabled {
-  opacity: .5;
-  cursor: wait;
+  opacity:.5;
+  cursor:not-allowed;
 }
 
-.muted {
-  color: #91a4bd;
-  font-size: 12px;
-  line-height: 1.6;
+.status {
+  margin-top:12px;
+  color:var(--muted);
+  font-size:12px;
 }
+
+.hidden { display:none !important; }
 
 .profile {
-  display: flex;
-  gap: 14px;
-  align-items: center;
+  display:flex;
+  gap:18px;
+  align-items:center;
 }
 
 .avatar {
-  width: 82px;
-  height: 82px;
-  border-radius: 12px;
-  object-fit: cover;
-  background: #253750;
-  border: 1px solid #38506d;
+  width:100px;
+  height:100px;
+  border-radius:12px;
+  background:#172438;
+  object-fit:cover;
+  border:1px solid var(--line);
 }
 
-.name {
-  font-size: 20px;
-  font-weight: bold;
-  overflow-wrap: anywhere;
+.username {
+  font-size:22px;
+  font-weight:bold;
+  overflow-wrap:anywhere;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 18px;
+.display-name {
+  color:var(--muted);
+  margin-top:5px;
 }
 
-.stat {
-  background: #091422;
-  padding: 13px 5px;
-  border: 1px solid #20334b;
-  border-radius: 8px;
-  text-align: center;
-  min-width: 0;
-}
-
-.stat strong {
-  display: block;
-  color: #3cdda2;
-  font-size: 19px;
-  overflow-wrap: anywhere;
-}
-
-.stat small {
-  font-size: 10px;
-  color: #91a4bd;
+.verified {
+  color:var(--cyan);
+  font-size:11px;
+  margin-top:8px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 9px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
 }
 
-.item {
-  background: #091422;
-  border: 1px solid #20334b;
-  padding: 12px;
-  border-radius: 8px;
-  overflow-wrap: anywhere;
-  font-size: 12px;
+.stat {
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:9px;
+  padding:15px 10px;
+  text-align:center;
 }
 
-.item b {
-  display: block;
-  color: #43d9a0;
-  margin-top: 7px;
+.stat-number {
+  font-size:22px;
+  font-weight:bold;
+  color:var(--cyan);
+  overflow-wrap:anywhere;
+}
+
+.stat-label {
+  color:var(--muted);
+  font-size:11px;
+  margin-top:6px;
+}
+
+.detail-row {
+  display:flex;
+  justify-content:space-between;
+  gap:15px;
+  padding:11px 0;
+  border-bottom:1px solid var(--line);
+  font-size:13px;
+}
+
+.detail-row:last-child { border:0; }
+
+.detail-row span:first-child { color:var(--muted); }
+
+.detail-row span:last-child {
+  text-align:right;
+  overflow-wrap:anywhere;
+}
+
+.description {
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  line-height:1.6;
+  font-size:13px;
+  color:#c4d2e5;
+}
+
+.friend {
+  padding:12px;
+  margin-bottom:8px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:8px;
+}
+
+.friend strong {
+  display:block;
+  font-size:13px;
+}
+
+.friend small {
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
+  overflow-wrap:anywhere;
+}
+
+.asset {
+  display:inline-block;
+  padding:9px 11px;
+  margin:4px;
+  background:var(--panel2);
+  border:1px solid var(--line);
+  border-radius:7px;
+  font-size:12px;
+  color:var(--cyan);
 }
 
 .terminal {
-  background: #030810;
-  color: #43dda0;
-  padding: 14px;
-  border-radius: 8px;
-  font: 12px/1.8 monospace;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  min-height: 125px;
-  max-height: 300px;
-  overflow-y: auto;
+  background:#050a10;
+  border:1px solid #1d3544;
+  border-radius:9px;
+  padding:15px;
+  height:190px;
+  overflow-y:auto;
+  font-family:monospace;
+  font-size:11px;
+  line-height:1.8;
+  color:var(--green);
+  overflow-wrap:anywhere;
 }
 
-a {
-  color: #53caff;
-  text-decoration: none;
+.terminal-title {
+  color:var(--cyan);
+  margin-bottom:10px;
+  font-weight:bold;
 }
 
-.list {
-  max-height: 240px;
-  overflow: auto;
+.result-button {
+  display:block;
+  width:100%;
+  text-align:left;
+  margin-top:8px;
+  background:var(--panel2);
+  color:var(--text);
+  border:1px solid var(--line);
 }
 
-.list div {
-  padding: 10px;
-  border-bottom: 1px solid #263b57;
-  font-size: 12px;
+.result-button small {
+  display:block;
+  color:var(--muted);
+  margin-top:5px;
 }
 
 footer {
-  text-align: center;
-  padding: 20px;
-  color: #71839d;
-  font-size: 11px;
+  text-align:center;
+  padding:20px;
+  color:var(--muted);
+  font-size:11px;
 }
 
-@media (min-width: 750px) {
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-  }
+@media(max-width:600px) {
+  body { padding:12px; }
+  .grid { grid-template-columns:repeat(3,1fr); }
+  .stat { padding:12px 5px; }
+  .stat-number { font-size:18px; }
+  .profile { align-items:flex-start; }
+  .avatar { width:82px;height:82px; }
+  .search-row { flex-direction:column; }
+  .search-row button { width:100%; }
 }
 </style>
 </head>
 
 <body>
+<div class="container">
 
 <header>
-  ◈ ROBLOX <span>PROFILE SCANNER</span>
+  <div class="logo">ROBLOX SCANNER</div>
+  <div class="subtitle">PUBLIC PROFILE ANALYSIS SYSTEM</div>
 </header>
 
-<main>
-
 <section class="panel">
-  <h2>⌕ USERNAME SCANNER</h2>
+  <div class="section-title">⌕ USERNAME SEARCH</div>
 
-  <input
-    id="username"
-    type="text"
-    placeholder="Enter Roblox username..."
-    autocomplete="off"
-  >
+  <div class="search-row">
+    <input
+      id="usernameInput"
+      type="text"
+      placeholder="Masukkan username Roblox..."
+      autocomplete="off"
+    >
+    <button id="scanBtn" type="button">SCAN PROFILE</button>
+  </div>
 
-  <button id="scan" type="button">
-    INITIALIZE SCAN
-  </button>
-
-  <p class="muted">
-    PUBLIC DATA ANALYSIS • ROBLOX API
-  </p>
+  <div class="status" id="status">
+    System ready. Waiting for username...
+  </div>
 </section>
 
-<div class="layout">
+<section class="panel hidden" id="searchResultsPanel">
+  <div class="section-title">SEARCH RESULTS</div>
+  <div id="searchResults"></div>
+</section>
 
-<section class="panel">
-  <h2>◈ PLAYER PROFILE</h2>
+<section class="panel hidden" id="profilePanel">
+  <div class="section-title">USER PROFILE</div>
 
   <div class="profile">
-    <img
-      id="avatar"
-      class="avatar"
-      alt="Roblox avatar"
-    >
+    <img id="avatar" class="avatar" alt="Roblox avatar">
 
     <div>
-      <div class="name" id="display">
-        Awaiting scan...
-      </div>
-
-      <div class="muted" id="handle">
-        @username
-      </div>
-
-      <div class="muted" id="created">
-        Created: --
-      </div>
+      <div class="username" id="profileName">-</div>
+      <div class="display-name" id="displayName">-</div>
+      <div class="verified" id="verified"></div>
     </div>
   </div>
-
-  <div class="stats">
-    <div class="stat">
-      <strong id="friends">--</strong>
-      <small>FRIENDS</small>
-    </div>
-
-    <div class="stat">
-      <strong id="followers">--</strong>
-      <small>FOLLOWERS</small>
-    </div>
-
-    <div class="stat">
-      <strong id="following">--</strong>
-      <small>FOLLOWING</small>
-    </div>
-  </div>
-
-  <p class="muted" id="description">
-    Profile description will appear here.
-  </p>
-
-  <a
-    id="profileLink"
-    href="https://www.roblox.com"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    OPEN ROBLOX PROFILE ↗
-  </a>
 </section>
 
-<section class="panel">
-  <h2>◈ NETWORK ANALYSIS</h2>
+<section class="panel hidden" id="statsPanel">
+  <div class="section-title">ACCOUNT STATISTICS</div>
 
   <div class="grid">
-    <div class="item">
-      USER ID
-      <b id="userid">--</b>
+    <div class="stat">
+      <div class="stat-number" id="friendsCount">—</div>
+      <div class="stat-label">FRIENDS</div>
     </div>
 
-    <div class="item">
-      PROFILE STATUS
-      <b id="status">--</b>
+    <div class="stat">
+      <div class="stat-number" id="followersCount">—</div>
+      <div class="stat-label">FOLLOWERS</div>
     </div>
 
-    <div class="item">
-      PROFILE TYPE
-      <b>PUBLIC</b>
-    </div>
-
-    <div class="item">
-      DATA SOURCE
-      <b>ROBLOX API</b>
-    </div>
-
-    <div class="item">
-      ACCOUNT AGE
-      <b id="age">--</b>
-    </div>
-
-    <div class="item">
-      SCAN STATUS
-      <b id="scanstatus">STANDBY</b>
-    </div>
-  </div>
-
-  <h2>◈ ACCOUNT LINKS ANALYSIS</h2>
-
-  <div class="item" id="links">
-    No account relationship analysis yet.
-  </div>
-</section>
-
-</div>
-
-<section class="panel">
-  <h2>◈ FRIENDS DATABASE</h2>
-
-  <div class="list" id="friendlist">
-    <div class="muted">
-      Search a username to load public friends.
+    <div class="stat">
+      <div class="stat-number" id="followingCount">—</div>
+      <div class="stat-label">FOLLOWING</div>
     </div>
   </div>
 </section>
 
-<section class="panel">
-  <h2>◈ CURRENTLY WEARING</h2>
+<section class="panel hidden" id="detailsPanel">
+  <div class="section-title">PROFILE DETAILS</div>
 
-  <div id="wearing" class="muted">
-    Avatar item data will appear here.
+  <div class="detail-row">
+    <span>Username</span>
+    <span id="detailUsername">-</span>
   </div>
+
+  <div class="detail-row">
+    <span>User ID</span>
+    <span id="userId">-</span>
+  </div>
+
+  <div class="detail-row">
+    <span>Account Created</span>
+    <span id="created">-</span>
+  </div>
+
+  <div class="detail-row">
+    <span>Profile Status</span>
+    <span id="accountStatus">-</span>
+  </div>
+
+  <div class="detail-row">
+    <span>Description</span>
+    <span></span>
+  </div>
+
+  <div class="description" id="description">-</div>
+</section>
+
+<section class="panel hidden" id="friendsPanel">
+  <div class="section-title">FRIENDS LIST</div>
+  <div id="friendList">Waiting for data...</div>
+</section>
+
+<section class="panel hidden" id="wearingPanel">
+  <div class="section-title">CURRENTLY WEARING</div>
+  <div id="wearingList">Waiting for data...</div>
 </section>
 
 <section class="panel">
-  <h2>⌘ LIVE SYSTEM TERMINAL</h2>
-
-  <div class="terminal" id="terminal">[SYSTEM] ROBLOX PROFILE SCANNER
-[STATUS] System initialized.
-[READY] Waiting for username input...</div>
+  <div class="terminal-title">⌘ LIVE SYSTEM TERMINAL</div>
+  <div class="terminal" id="terminal">
+    <div>[SYSTEM] ROBLOX PROFILE SCANNER</div>
+    <div>[STATUS] System initialized.</div>
+    <div>[READY] Waiting for username input...</div>
+  </div>
 </section>
 
 <footer>
-  ROBLOX PROFILE SCANNER • INDEPENDENT FAN PROJECT<br>
-  Not affiliated with Roblox Corporation.<br>
-  Only publicly accessible information is analyzed.
+  ROBLOX PROFILE SCANNER · PUBLIC DATA ONLY
+  <br><br>
+  This tool does not access private account information.
 </footer>
 
-</main>
+</div>
 
 <script>
 "use strict";
 
-const $ = (id) => document.getElementById(id);
+/* CLOUDFLARE WORKER VERSION 3.0 */
+
+const API_BASE =
+  "https://roblox-profile-api.asepyunus370.workers.dev/proxy/";
+
+const $ = id => document.getElementById(id);
+
+let currentUser = null;
+let scanRunning = false;
 
 function log(message) {
   const terminal = $("terminal");
+  const line = document.createElement("div");
 
-  terminal.textContent += "\n[+] " + message;
+  line.textContent =
+    "[" + new Date().toLocaleTimeString("id-ID") + "] " +
+    message;
+
+  terminal.appendChild(line);
   terminal.scrollTop = terminal.scrollHeight;
 }
 
-
-const WORKER_URL =
-  "https://roblox-profile-api.asepyunus370.workers.dev";
-
-async function api(url) {
-  log("Requesting Roblox API through Cloudflare Worker...");
-
-  const original = new URL(url);
-
-  const allowedHosts = [
-    "users.roblox.com",
-    "friends.roblox.com",
-    "thumbnails.roblox.com",
-    "avatar.roblox.com"
-  ];
-
-  if (!allowedHosts.includes(original.hostname)) {
-    throw new Error("API host tidak diizinkan.");
-  }
-
-  const proxyUrl =
-    WORKER_URL +
-    "/proxy/" +
-    original.hostname +
-    original.pathname +
-    original.search;
-
-  let response;
-
-  try {
-    response = await fetch(proxyUrl);
-  } catch (error) {
-    throw new Error("Worker connection failed: " + error.message);
-  }
-
-  const data = await response.json();
-
-  if (!response.ok) {
-    throw new Error(
-      data.error || "HTTP " + response.status
-    );
-  }
-
-  return data;
+function setStatus(message) {
+  $("status").textContent = message;
 }
 
+function show(id) {
+  $(id).classList.remove("hidden");
+}
 
-function resetProfile() {
-  $("display").textContent = "Loading...";
-  $("handle").textContent = "@...";
-  $("created").textContent = "Created: --";
+function hide(id) {
+  $(id).classList.add("hidden");
+}
+
+function formatNumber(number) {
+  return Number(number).toLocaleString("id-ID");
+}
+
+function clearResults() {
+  [
+    "profilePanel",
+    "statsPanel",
+    "detailsPanel",
+    "friendsPanel",
+    "wearingPanel",
+    "searchResultsPanel"
+  ].forEach(hide);
+
+  $("friendList").textContent = "";
+  $("wearingList").textContent = "";
+  $("searchResults").replaceChildren();
   $("avatar").removeAttribute("src");
 
-  $("friends").textContent = "--";
-  $("followers").textContent = "--";
-  $("following").textContent = "--";
-
-  $("userid").textContent = "--";
-  $("status").textContent = "--";
-  $("age").textContent = "--";
-
-  $("description").textContent = "Loading profile...";
-  $("links").textContent = "Analyzing public information...";
-  $("friendlist").textContent = "Loading...";
-  $("wearing").textContent = "Loading...";
-
-  $("profileLink").href = "https://www.roblox.com";
+  $("friendsCount").textContent = "—";
+  $("followersCount").textContent = "—";
+  $("followingCount").textContent = "—";
 }
 
-async function scanProfile() {
-  const username = $("username").value.trim();
-  const button = $("scan");
+async function api(host, path, params = {}) {
+  const url = new URL(
+    API_BASE + host + path
+  );
 
-  if (!username) {
-    alert("Please enter a Roblox username.");
-    $("username").focus();
+  Object.entries(params).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      url.searchParams.set(key, String(value));
+    }
+  });
+
+  const response = await fetch(url.toString(), {
+    method: "GET",
+    headers: {
+      "Accept": "application/json"
+    }
+  });
+
+  if (!response.ok) {
+    throw new Error("HTTP " + response.status);
+  }
+
+  return await response.json();
+}
+
+function wait(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function optionalRequest(label, host, path, params = {}) {
+  await wait(1000);
+
+  try {
+    log("Loading " + label + "...");
+
+    const result = await api(host, path, params);
+
+    log(label + " loaded successfully.");
+
+    return result;
+
+  } catch (error) {
+    log(label + " unavailable: " + error.message);
+
+    return null;
+  }
+}
+
+async function searchUsername() {
+  if (scanRunning) return;
+
+  const keyword = $("usernameInput").value.trim();
+
+  if (!keyword) {
+    setStatus("Masukkan username Roblox terlebih dahulu.");
     return;
   }
 
-  button.disabled = true;
-  button.textContent = "SCANNING...";
+  scanRunning = true;
+  $("scanBtn").disabled = true;
 
-  $("scanstatus").textContent = "SCANNING";
-  $("terminal").textContent = "[SYSTEM] Initializing scan...";
+  clearResults();
 
-  resetProfile();
+  $("terminal").replaceChildren();
+
+  log("Initializing scan...");
+  log("Searching username...");
+
+  setStatus("Searching Roblox username...");
 
   try {
-    // SEARCH USERNAME
-
-    log("Searching username...");
-
-    const searchUrl =
-      "https://users.roblox.com/v1/users/search?keyword=" +
-      encodeURIComponent(username) +
-      "&limit=10";
-
-    const search = await api(searchUrl);
-
-    const match = search.data?.find(
-      user =>
-        user.name?.toLowerCase() ===
-        username.toLowerCase()
-    );
-
-    if (!match) {
-      throw new Error("Username not found.");
-    }
-
-    const id = match.id;
-
-    log("User ID found: " + id);
-
-    // USER PROFILE
-
-    const user = await api(
-      "https://users.roblox.com/v1/users/" + id
-    );
-
-    $("display").textContent =
-      user.displayName || user.name;
-
-    $("handle").textContent = "@" + user.name;
-
-    $("userid").textContent = id;
-
-    $("status").textContent = "PUBLIC PROFILE";
-
-    $("description").textContent =
-      user.description || "No description";
-
-    const createdDate = new Date(user.created);
-
-    $("created").textContent =
-      "Created: " +
-      createdDate.toLocaleDateString("id-ID");
-
-    const accountAge = Math.floor(
-      (Date.now() - createdDate.getTime()) /
-      31557600000
-    );
-
-    $("age").textContent =
-      accountAge + " years";
-
-    $("profileLink").href =
-      "https://www.roblox.com/users/" +
-      id +
-      "/profile";
-
-    log("Profile retrieved successfully.");
-
-    // AVATAR
-
-    try {
-      const thumbnail = await api(
-        "https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=" +
-        id +
-        "&size=150x150&format=Png&isCircular=true"
-      );
-
-      const imageUrl =
-        thumbnail.data?.[0]?.imageUrl;
-
-      if (imageUrl) {
-        $("avatar").src = imageUrl;
+    const result = await api(
+      "users.roblox.com",
+      "/v1/users/search",
+      {
+        keyword: keyword,
+        limit: 10
       }
-
-      log("Avatar retrieved.");
-    } catch (error) {
-      log("Avatar unavailable: " + error.message);
-    }
-
-    // FRIENDS AND FOLLOWERS COUNTS
-
-    const countEndpoints = [
-      [
-        "friends",
-        "https://friends.roblox.com/v1/users/" +
-        id +
-        "/friends/count"
-      ],
-      [
-        "followers",
-        "https://friends.roblox.com/v1/users/" +
-        id +
-        "/followers/count"
-      ],
-      [
-        "following",
-        "https://friends.roblox.com/v1/users/" +
-        id +
-        "/followings/count"
-      ]
-    ];
-
-    await Promise.all(
-      countEndpoints.map(async ([key, url]) => {
-        try {
-          const data = await api(url);
-
-          $(key).textContent =
-            data.count ?? "N/A";
-
-          log(key + " count retrieved.");
-        } catch (error) {
-          $(key).textContent = "N/A";
-          log(key + " unavailable.");
-        }
-      })
     );
 
-    // FRIENDS LIST
+    const users = result.data || [];
 
-    try {
-      const data = await api(
-        "https://friends.roblox.com/v1/users/" +
-        id +
-        "/friends"
-      );
-
-      $("friendlist").innerHTML = "";
-
-      if (data.data?.length) {
-        data.data.forEach(friend => {
-          const row = document.createElement("div");
-
-          row.textContent =
-            (friend.displayName || friend.name) +
-            " (@" +
-            friend.name +
-            ")";
-
-          $("friendlist").appendChild(row);
-        });
-
-        log("Friends list loaded.");
-      } else {
-        $("friendlist").textContent =
-          "No public friends returned.";
-      }
-    } catch (error) {
-      $("friendlist").textContent =
-        "Friends list unavailable.";
-
-      log("Friends list unavailable.");
+    if (!users.length) {
+      throw new Error("Username tidak ditemukan.");
     }
 
-    // CURRENTLY WEARING
+    log("Search successful: " + users.length + " result(s).");
 
-    try {
-      const outfit = await api(
-        "https://avatar.roblox.com/v1/users/" +
-        id +
-        "/currently-wearing"
-      );
+    const exact = users.find(
+      user => user.name.toLowerCase() === keyword.toLowerCase()
+    );
 
-      const assets = outfit.assetIds || [];
-
-      $("wearing").textContent =
-        assets.length
-          ? "Asset IDs: " + assets.join(", ")
-          : "No wearing items returned.";
-
-      log("Avatar items retrieved.");
-    } catch (error) {
-      $("wearing").textContent =
-        "Avatar item data unavailable.";
-
-      log("Avatar items unavailable.");
+    if (exact) {
+      await loadProfile(exact);
+      return;
     }
 
-    // ACCOUNT LINKS
+    show("searchResultsPanel");
 
-    $("links").textContent =
-      "No verified account ownership links. " +
-      "Public friend relationships do not prove common ownership.";
+    $("searchResults").replaceChildren();
 
-    $("scanstatus").textContent = "COMPLETED";
+    setStatus("Pilih akun yang sesuai dengan username.");
 
-    log("SCAN COMPLETED.");
+    users.forEach(user => {
+      const button = document.createElement("button");
+
+      button.type = "button";
+      button.className = "result-button";
+
+      const title = document.createElement("strong");
+      title.textContent = user.displayName || user.name;
+
+      const detail = document.createElement("small");
+      detail.textContent =
+        "@" + user.name + " · ID: " + user.id;
+
+      button.append(title, detail);
+
+      button.addEventListener("click", async () => {
+        await loadProfile(user);
+      });
+
+      $("searchResults").appendChild(button);
+    });
+
+    log("Choose the correct account from search results.");
 
   } catch (error) {
-    $("scanstatus").textContent = "ERROR";
-
-    log("SCAN ERROR: " + error.message);
-
-    alert(
-      "Scan failed: " +
-      error.message +
-      "\n\nIf this is a CORS error, a secure API proxy may be required."
-    );
+    log("SEARCH ERROR: " + error.message);
+    setStatus("Pencarian gagal: " + error.message);
 
   } finally {
-    button.disabled = false;
-    button.textContent = "INITIALIZE SCAN";
+    scanRunning = false;
+    $("scanBtn").disabled = false;
   }
 }
 
-// BUTTON EVENT
+async function loadProfile(user) {
+  if (scanRunning) return;
 
-$("scan").addEventListener(
+  scanRunning = true;
+  $("scanBtn").disabled = true;
+
+  currentUser = user;
+
+  const id = user.id;
+
+  clearResults();
+
+  show("profilePanel");
+  show("statsPanel");
+  show("detailsPanel");
+  show("friendsPanel");
+  show("wearingPanel");
+
+  $("profileName").textContent = "@" + user.name;
+  $("displayName").textContent = user.displayName || "-";
+  $("userId").textContent = id;
+  $("detailUsername").textContent = user.name;
+
+  $("created").textContent = "Loading...";
+  $("description").textContent = "Loading profile details...";
+  $("accountStatus").textContent = "Basic data found";
+
+  $("verified").textContent =
+    user.hasVerifiedBadge ? "✓ VERIFIED BADGE" : "";
+
+  $("friendList").textContent = "Loading friends...";
+  $("wearingList").textContent = "Loading items...";
+
+  log("User ID found: " + id);
+  log("Partial scan activated.");
+
+  setStatus("Basic profile found. Loading additional information...");
+
+  try {
+
+    /* 1. PROFILE DETAILS */
+
+    const profile = await optionalRequest(
+      "Profile details",
+      "users.roblox.com",
+      "/v1/users/" + id
+    );
+
+    if (profile) {
+      $("profileName").textContent = "@" + profile.name;
+
+      $("displayName").textContent =
+        profile.displayName || user.displayName || "-";
+
+      $("created").textContent = profile.created
+        ? new Date(profile.created).toLocaleDateString("id-ID")
+        : "Not available";
+
+      $("description").textContent =
+        profile.description || "Tidak ada deskripsi.";
+
+      $("verified").textContent =
+        profile.hasVerifiedBadge ? "✓ VERIFIED BADGE" : "";
+
+      $("accountStatus").textContent =
+        "Profile details loaded";
+    }
+
+    /* 2. AVATAR */
+
+    const avatar = await optionalRequest(
+      "Avatar",
+      "thumbnails.roblox.com",
+      "/v1/users/avatar-headshot",
+      {
+        userIds: id,
+        size: "150x150",
+        format: "Png",
+        isCircular: "false"
+      }
+    );
+
+    const avatarUrl = avatar?.data?.[0]?.imageUrl;
+
+    if (avatarUrl) {
+      $("avatar").src = avatarUrl;
+    }
+
+    /* 3. FRIEND COUNT */
+
+    const friends = await optionalRequest(
+      "Friends count",
+      "friends.roblox.com",
+      "/v1/users/" + id + "/friends/count"
+    );
+
+    if (typeof friends?.count === "number") {
+      $("friendsCount").textContent =
+        formatNumber(friends.count);
+    }
+
+    /* 4. FOLLOWERS */
+
+    const followers = await optionalRequest(
+      "Followers count",
+      "friends.roblox.com",
+      "/v1/users/" + id + "/followers/count"
+    );
+
+    if (typeof followers?.count === "number") {
+      $("followersCount").textContent =
+        formatNumber(followers.count);
+    }
+
+    /* 5. FOLLOWING */
+
+    const following = await optionalRequest(
+      "Following count",
+      "friends.roblox.com",
+      "/v1/users/" + id + "/followings/count"
+    );
+
+    if (typeof following?.count === "number") {
+      $("followingCount").textContent =
+        formatNumber(following.count);
+    }
+
+    /* 6. FRIENDS LIST */
+
+    const friendData = await optionalRequest(
+      "Friends list",
+      "friends.roblox.com",
+      "/v1/users/" + id + "/friends",
+      {
+        limit: 10
+      }
+    );
+
+    const friendContainer = $("friendList");
+    friendContainer.replaceChildren();
+
+    if (friendData?.data?.length) {
+      friendData.data.forEach(friend => {
+        const item = document.createElement("div");
+        item.className = "friend";
+
+        const name = document.createElement("strong");
+        name.textContent =
+          friend.displayName || friend.name;
+
+        const detail = document.createElement("small");
+        detail.textContent =
+          "@" + friend.name + " · ID: " + friend.id;
+
+        item.append(name, detail);
+        friendContainer.appendChild(item);
+      });
+    } else {
+      friendContainer.textContent =
+        "Data teman tidak tersedia.";
+    }
+
+    /* 7. CURRENTLY WEARING */
+
+    const wearing = await optionalRequest(
+      "Currently wearing",
+      "avatar.roblox.com",
+      "/v1/users/" + id + "/currently-wearing"
+    );
+
+    const assetContainer = $("wearingList");
+    assetContainer.replaceChildren();
+
+    if (wearing?.assetIds?.length) {
+      wearing.assetIds.forEach(assetId => {
+        const item = document.createElement("span");
+
+        item.className = "asset";
+        item.textContent = "Asset ID: " + assetId;
+
+        assetContainer.appendChild(item);
+      });
+    } else {
+      assetContainer.textContent =
+        "Data item tidak tersedia.";
+    }
+
+    log("Partial scan completed.");
+
+    setStatus(
+      "Pemindaian selesai. Data yang dibatasi Roblox ditampilkan sebagai tidak tersedia."
+    );
+
+  } catch (error) {
+    log("SCAN ERROR: " + error.message);
+
+    setStatus(
+      "Sebagian data berhasil dimuat. Beberapa informasi tidak tersedia."
+    );
+
+  } finally {
+    scanRunning = false;
+    $("scanBtn").disabled = false;
+  }
+}
+
+$("scanBtn").addEventListener(
   "click",
-  scanProfile
+  searchUsername
 );
 
-// ENTER KEY
-
-$("username").addEventListener(
+$("usernameInput").addEventListener(
   "keydown",
-  function(event) {
+  event => {
     if (event.key === "Enter") {
-      scanProfile();
+      searchUsername();
     }
   }
 );
 
-alert("JAVASCRIPT BERHASIL DIJALANKAN!");
-log("Scanner JavaScript loaded.");
-
+log("System initialized successfully.");
 </script>
 
 </body>
