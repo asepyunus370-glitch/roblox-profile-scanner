@@ -377,25 +377,52 @@ function log(message) {
   terminal.scrollTop = terminal.scrollHeight;
 }
 
+
+const WORKER_URL =
+  "https://roblox-profile-api.asepyunus370.workers.dev";
+
 async function api(url) {
-  log("Requesting Roblox API...");
+  log("Requesting Roblox API through Cloudflare Worker...");
+
+  const original = new URL(url);
+
+  const allowedHosts = [
+    "users.roblox.com",
+    "friends.roblox.com",
+    "thumbnails.roblox.com",
+    "avatar.roblox.com"
+  ];
+
+  if (!allowedHosts.includes(original.hostname)) {
+    throw new Error("API host tidak diizinkan.");
+  }
+
+  const proxyUrl =
+    WORKER_URL +
+    "/proxy/" +
+    original.hostname +
+    original.pathname +
+    original.search;
 
   let response;
 
   try {
-    response = await fetch(url);
+    response = await fetch(proxyUrl);
   } catch (error) {
+    throw new Error("Worker connection failed: " + error.message);
+  }
+
+  const data = await response.json();
+
+  if (!response.ok) {
     throw new Error(
-      "Network/CORS error: " + error.message
+      data.error || "HTTP " + response.status
     );
   }
 
-  if (!response.ok) {
-    throw new Error("HTTP " + response.status);
-  }
-
-  return await response.json();
+  return data;
 }
+
 
 function resetProfile() {
   $("display").textContent = "Loading...";
